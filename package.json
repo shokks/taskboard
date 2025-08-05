@@ -1,6 +1,6 @@
 {
   "name": "claude-taskboard",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A real-time Kanban dashboard for TaskMaster AI projects - visual companion for AI-assisted development workflows",
   "type": "module",
   "bin": {
