@@ -1,9 +1,9 @@
 # Taskboard
 
-[![npm version](https://badge.fury.io/js/taskboard.svg)](https://www.npmjs.com/package/taskboard)
+[![npm version](https://badge.fury.io/js/claude-taskboard.svg)](https://www.npmjs.com/package/claude-taskboard)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)](https://nodejs.org/)
-[![Downloads](https://img.shields.io/npm/dm/taskboard.svg)](https://www.npmjs.com/package/taskboard)
+[![Downloads](https://img.shields.io/npm/dm/claude-taskboard.svg)](https://www.npmjs.com/package/claude-taskboard)
 [![GitHub stars](https://img.shields.io/github/stars/shokks/taskboard.svg?style=social&label=Star)](https://github.com/shokks/taskboard)
 [![GitHub issues](https://img.shields.io/github/issues/shokks/taskboard.svg)](https://github.com/shokks/taskboard/issues)
 
@@ -63,13 +63,13 @@ If you haven't set up TaskMaster AI yet, visit the [official repository](https:/
 ## Installation
 
 ```bash
-npm install -g taskboard
+npm install -g claude-taskboard
 ```
 
 Or with yarn:
 
 ```bash
-yarn global add taskboard
+yarn global add claude-taskboard
 ```
 
 ## Usage
@@ -186,8 +186,8 @@ Special thanks to the TaskMaster AI community and the broader AI development eco
 
 ## Version History
 
-### v1.0.0 (Current)
-*Initial Release - August 2025*
+### v1.0.3 (Current)
+*Latest Release - August 2025*
 
 **🎉 Initial Features:**
 - **Real-time Kanban Dashboard**: Live visualization of TaskMaster AI tasks with automatic updates

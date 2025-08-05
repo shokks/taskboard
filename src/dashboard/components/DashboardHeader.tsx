@@ -17,7 +17,7 @@ import { useHeaderCollapse } from '../hooks/useHeaderCollapse';
 import { Logo } from './Logo';
 
 // Version from package.json
-const VERSION = '1.0.2';
+const VERSION = '1.0.3';
 
 interface DashboardHeaderProps {
   taskData: TaskData;
