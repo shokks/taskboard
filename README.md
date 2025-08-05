@@ -109,7 +109,7 @@ To run the dashboard in development mode:
 
 ```bash
 git clone <repository>
-cd taskmaster-dashboard
+cd taskboard
 npm install
 npm run dev
 ```
