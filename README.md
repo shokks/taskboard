@@ -9,16 +9,28 @@
 
 A real-time Kanban dashboard for [TaskMaster AI](https://github.com/eyaltoledano/claude-task-master) projects. This tool provides a beautiful, live visualization of your TaskMaster AI tasks, automatically updating as your AI-assisted development workflow progresses.
 
-## About TaskMaster AI
+TaskMaster AI, created by [Eyal Toledano](https://github.com/eyaltoledano), is an AI-powered project management system that breaks down complex software development projects into manageable, structured tasks. It integrates seamlessly with AI-driven development environments like Cursor AI, Windsurf, Roo, and others, helping maintain context and organization throughout the development process.
 
-[TaskMaster AI](https://task-master.dev) is an AI-powered project management system that breaks down complex software development projects into manageable, structured tasks. Created by [Eyal Toledano](https://github.com/eyaltoledano), TaskMaster AI integrates seamlessly with AI-driven development environments like Cursor AI, Windsurf, Roo, and others, helping maintain context and organization throughout the development process.
+**This taskboard serves as the perfect visual companion**, transforming your structured TaskMaster AI tasks into an intuitive Kanban board that updates in real-time. Whether you're working with Claude, Cursor AI, or other AI assistants, you'll have a live dashboard showing exactly where your project stands - making AI-assisted development more organized and productive than ever.
 
-**This taskboard serves as a visual companion to TaskMaster AI**, transforming your structured tasks into an intuitive Kanban board that updates in real-time as you work with AI assistants like Claude.
+## From Raw JSON to Beautiful Dashboard
 
-## Screenshots
+Transform your TaskMaster AI experience from overwhelming JSON files to intuitive visual project management.
 
+### Before: TaskMaster AI Tasks (Raw JSON)
+![Raw TaskMaster AI JSON](screenshots/before.png)
+*Raw TaskMaster AI tasks.json file - functional but difficult to navigate, understand, and share with your team*
+
+### After: Taskboard Dashboard
 ![Taskboard Dashboard](screenshots/dashboard.png)
-*Modern dashboard with intelligent metrics, clean Lucide icons, and professional design. Features collapsible header, real-time task visualization, and intuitive Kanban workflow.*
+*The same tasks transformed into a beautiful, intuitive Kanban dashboard with real-time updates, progress tracking, metrics, and professional presentation*
+
+**The Transformation:**
+- **📊 Instant Project Insights**: See progress, bottlenecks, and priorities at a glance instead of parsing JSON manually
+- **🎨 Professional Presentation**: Perfect for client demos, team standups, and stakeholder updates
+- **⚡ Real-time Intelligence**: Live metrics, progress bars, and status indicators vs static text files
+- **🧭 Intuitive Navigation**: Organized Kanban columns instead of nested JSON structures
+- **👥 Team-Friendly**: Share visual dashboards instead of asking team members to read raw JSON
 
 ## Features
 
