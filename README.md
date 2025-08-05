@@ -1,15 +1,36 @@
 # Taskboard
 
-A Kanban dashboard for TaskMaster projects with real-time updates. This tool provides a read-only view of your TaskMaster project tasks, automatically updating as tasks change.
+A real-time Kanban dashboard for [TaskMaster AI](https://github.com/eyaltoledano/claude-task-master) projects. This tool provides a beautiful, live visualization of your TaskMaster AI tasks, automatically updating as your AI-assisted development workflow progresses.
+
+## About TaskMaster AI
+
+[TaskMaster AI](https://task-master.dev) is an AI-powered project management system that breaks down complex software development projects into manageable, structured tasks. Created by [Eyal Toledano](https://github.com/eyaltoledano), TaskMaster AI integrates seamlessly with AI-driven development environments like Cursor AI, Windsurf, Roo, and others, helping maintain context and organization throughout the development process.
+
+**This taskboard serves as a visual companion to TaskMaster AI**, transforming your structured tasks into an intuitive Kanban board that updates in real-time as you work with AI assistants like Claude.
 
 ## Features
 
-- 📋 **Real-time Kanban Board**: Visualize tasks in Pending, In Progress, Review, and Completed columns
-- 🔄 **Live Updates**: Automatically refreshes when tasks.json changes
-- 🎯 **Task Details**: View task titles, descriptions, priorities, subtasks, and dependencies
-- 🚀 **Zero Configuration**: Works immediately after installation
+- 📋 **Live Kanban Visualization**: Transform TaskMaster AI tasks into a beautiful Kanban board
+- 🔄 **Real-time Updates**: Automatically refreshes when TaskMaster AI updates your tasks.json
+- 🎯 **Complete Task Details**: View titles, descriptions, priorities, subtasks, and dependencies
+- 🤖 **AI Development Workflow**: Perfect companion for AI-assisted development with Claude, Cursor, and others
+- 🚀 **Zero Configuration**: Works immediately with any TaskMaster AI project
 - 🔌 **Non-intrusive**: Runs independently without affecting your development workflow
-- 🌐 **Multi-project Support**: Each project gets its own dashboard instance on different ports
+- 🌐 **Multi-project Support**: Each TaskMaster AI project gets its own dashboard instance
+
+## Prerequisites
+
+- Node.js 16 or higher
+- A project with [TaskMaster AI](https://github.com/eyaltoledano/claude-task-master) initialized
+- The `.taskmaster/tasks/tasks.json` file created by TaskMaster AI
+
+### Setting up TaskMaster AI First
+
+If you haven't set up TaskMaster AI yet, visit the [official repository](https://github.com/eyaltoledano/claude-task-master) for installation instructions. TaskMaster AI can be integrated as:
+
+- An MCP server with Claude Desktop
+- A project management system within Cursor AI, Windsurf, Roo, and other AI development environments
+- A standalone task management tool for AI-assisted development projects
 
 ## Installation
 
@@ -25,17 +46,17 @@ yarn global add taskboard
 
 ## Usage
 
-Navigate to any TaskMaster-enabled project and run:
+Navigate to any TaskMaster AI-enabled project and run:
 
 ```bash
-cd /path/to/your/project
+cd /path/to/your/taskmaster-project
 taskboard serve
 ```
 
 The dashboard will automatically:
 1. Find an available port (default: 5000)
 2. Start watching your `.taskmaster/tasks/tasks.json` file
-3. Open your browser to the dashboard
+3. Open your browser to the live dashboard
 
 ### Command Options
 
@@ -66,53 +87,74 @@ Start without opening browser:
 taskboard serve --no-open
 ```
 
-## Prerequisites
-
-- Node.js 16 or higher
-- A project with TaskMaster initialized (`.taskmaster/tasks/tasks.json` file)
-
 ## How It Works
 
-1. The dashboard watches your project's `.taskmaster/tasks/tasks.json` file
-2. When tasks are updated through TaskMaster, the file changes
-3. The dashboard detects these changes and updates the UI in real-time
-4. Tasks are displayed in a Kanban board format based on their status
+1. TaskMaster AI manages your project tasks in `.taskmaster/tasks/tasks.json`
+2. As you work with AI assistants (Claude, Cursor AI, etc.), TaskMaster AI updates task statuses
+3. This dashboard watches the tasks file and reflects changes instantly
+4. Tasks are displayed in columns: Pending, In Progress, Review, and Completed
+5. You get a real-time visual overview of your AI-assisted development progress
 
 ## Task Visualization
 
-Tasks are displayed with:
-- **Title and Description**: Main task information
-- **Priority Indicators**: 🔴 High, 🟡 Medium, 🟢 Low
-- **Task ID**: Unique identifier for each task
-- **Subtask Progress**: Shows completed/total subtasks
-- **Dependencies**: Number of task dependencies
+The dashboard displays TaskMaster AI tasks with:
+
+- **Title and Description**: Complete task information from TaskMaster AI
+- **Priority Indicators**: 🔴 High, 🟡 Medium, 🟢 Low priority tasks
+- **Task ID**: Unique identifiers matching TaskMaster AI's task system
+- **Subtask Progress**: Visual progress bars showing completed/total subtasks
+- **Dependencies**: Clear indication of task dependencies and blockers
+- **Status Tracking**: Real-time status updates as AI assistants complete work
+
+## Integration with AI Development Workflow
+
+This dashboard enhances your AI-assisted development experience by:
+
+- **Visual Context**: See all TaskMaster AI tasks at a glance while working with Claude or other AI assistants
+- **Progress Tracking**: Monitor how AI-assisted work progresses through your project
+- **Team Collaboration**: Share live dashboard views with team members
+- **Project Overview**: Maintain big-picture awareness during detailed AI-assisted coding sessions
 
 ## Troubleshooting
 
 ### Dashboard shows "Tasks file not found"
-- Ensure TaskMaster is initialized in your project
+- Ensure TaskMaster AI is initialized in your project: `npm install @taskmaster-ai/cli`
 - Check that `.taskmaster/tasks/tasks.json` exists
-- Verify you're running the command from the project root
+- Verify you're running the command from the correct project root
+- Refer to [TaskMaster AI documentation](https://github.com/eyaltoledano/claude-task-master/blob/main/docs/tutorial.md)
 
 ### Port already in use
-- The dashboard will automatically find the next available port
+- The dashboard will automatically find the next available port (5000-5999)
 - Or specify a different port with `--port`
 
 ### Changes not reflecting
-- Ensure the tasks.json file is being updated
-- Check the console for any error messages
-- Try refreshing the browser
+- Ensure TaskMaster AI is actively updating the tasks.json file
+- Check that your AI assistant (Claude, Cursor AI, etc.) is properly integrated with TaskMaster AI
+- Try refreshing the browser or restarting the dashboard
+
+## Related Projects
+
+- **[TaskMaster AI](https://github.com/eyaltoledano/claude-task-master)** - The main project management system this dashboard visualizes
+- **[Task-Master.dev](https://task-master.dev)** - Official TaskMaster AI website and documentation
+- **[Claude Desktop](https://claude.ai/desktop)** - AI assistant that integrates with TaskMaster AI via MCP
+- **[Cursor AI](https://cursor.sh)** - AI-powered code editor with TaskMaster AI integration
 
 ## Development
 
-To run the dashboard in development mode:
+To contribute to this visualization tool:
 
 ```bash
-git clone <repository>
+git clone https://github.com/shokks/taskboard.git
 cd taskboard
 npm install
 npm run dev
 ```
+
+## Credits
+
+This project is a visualization companion for [TaskMaster AI](https://github.com/eyaltoledano/claude-task-master), created by [Eyal Toledano](https://github.com/eyaltoledano). TaskMaster AI revolutionizes AI-assisted development by providing structured task management that keeps AI agents focused and productive.
+
+Special thanks to the TaskMaster AI community and the broader AI development ecosystem, including the teams behind Claude, Cursor AI, Windsurf, and other tools that make AI-assisted development possible.
 
 ## License
 
@@ -120,4 +162,6 @@ MIT
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! This project aims to enhance the TaskMaster AI ecosystem with better visualization tools. Please feel free to submit issues and pull requests.
+
+For TaskMaster AI core functionality, please contribute to the [main TaskMaster AI repository](https://github.com/eyaltoledano/claude-task-master).

@@ -1,7 +1,7 @@
 {
   "name": "taskboard",
   "version": "1.0.0",
-  "description": "A Kanban dashboard for TaskMaster projects with real-time updates",
+  "description": "A real-time Kanban dashboard for TaskMaster AI projects - visual companion for AI-assisted development workflows",
   "type": "module",
   "bin": {
     "taskboard": "./dist/cli/index.js"
@@ -16,6 +16,7 @@
     "test": "vitest"
   },
   "keywords": [
+    "taskmaster-ai",
     "taskmaster",
     "dashboard",
     "kanban",
@@ -23,7 +24,12 @@
     "visualization",
     "cli",
     "real-time",
-    "project-management"
+    "project-management",
+    "ai-development",
+    "claude",
+    "cursor-ai",
+    "ai-assistant",
+    "mcp-server"
   ],
   "author": "Saikat Roy <5454155+shokks@users.noreply.github.com>",
   "license": "MIT",

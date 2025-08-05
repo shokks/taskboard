@@ -1,3 +1,4 @@
+import { Circle } from 'lucide-react';
 import { Subtask } from '../types/task.types';
 import { StatusBadge } from './StatusBadge';
 
@@ -14,9 +15,15 @@ export function SubtaskCard({ subtask, parentId }: SubtaskCardProps) {
   };
 
   const priorityLabels = {
-    high: '🔴 High',
-    medium: '🟡 Medium',
-    low: '🟢 Low',
+    high: 'High',
+    medium: 'Medium',
+    low: 'Low',
+  };
+
+  const priorityTextColors = {
+    high: 'text-red-600',
+    medium: 'text-yellow-600', 
+    low: 'text-green-600',
   };
 
   const borderColor = subtask.priority 
@@ -44,9 +51,15 @@ export function SubtaskCard({ subtask, parentId }: SubtaskCardProps) {
               #{parentId}.{subtask.id}
             </span>
             {subtask.priority && (
-              <span className="text-xs text-gray-500 dark:text-gray-400">
-                {priorityLabels[subtask.priority]}
-              </span>
+              <div className="flex items-center gap-1 text-xs">
+                <Circle 
+                  size={6} 
+                  className={`fill-current ${priorityTextColors[subtask.priority]}`} 
+                />
+                <span className={priorityTextColors[subtask.priority]}>
+                  {priorityLabels[subtask.priority]}
+                </span>
+              </div>
             )}
           </div>
         </div>

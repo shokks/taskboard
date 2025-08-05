@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ChevronDown, Circle } from 'lucide-react';
 import { Task } from '../types/task.types';
 import { StatusBadge } from './StatusBadge';
 import { SubtaskList } from './SubtaskList';
@@ -18,9 +19,15 @@ export function TaskCard({ task }: TaskCardProps) {
   };
 
   const priorityLabels = {
-    high: '🔴 High',
-    medium: '🟡 Medium',
-    low: '🟢 Low',
+    high: 'High',
+    medium: 'Medium',
+    low: 'Low',
+  };
+
+  const priorityColors = {
+    high: 'text-red-600',
+    medium: 'text-yellow-600',
+    low: 'text-green-600',
   };
 
   const borderColor = task.priority ? priorityBorders[task.priority] : 'border-gray-300 dark:border-gray-600';
@@ -97,24 +104,28 @@ export function TaskCard({ task }: TaskCardProps) {
                 #{task.id}
               </span>
               {task.priority && (
-                <span className="text-xs text-muted-foreground">
-                  {priorityLabels[task.priority]}
-                </span>
+                <div className="flex items-center gap-1 text-xs">
+                  <Circle 
+                    size={8} 
+                    className={`fill-current ${priorityColors[task.priority]}`} 
+                  />
+                  <span className={priorityColors[task.priority]}>
+                    {priorityLabels[task.priority]}
+                  </span>
+                </div>
               )}
             </div>
           </div>
           
           <div className="flex items-center gap-2">
             <StatusBadge status={task.status} size="sm" />
-            <button 
-              className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-transform duration-200"
-              style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
+            <ChevronDown 
+              size={16}
+              className={`text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-transform duration-200 ${
+                isExpanded ? 'rotate-180' : 'rotate-0'
+              }`}
               aria-label={isExpanded ? 'Collapse' : 'Expand'}
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
+            />
           </div>
         </div>
 

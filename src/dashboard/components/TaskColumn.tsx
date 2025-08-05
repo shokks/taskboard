@@ -1,3 +1,4 @@
+import { FileText } from 'lucide-react';
 import { Task } from '../types/task.types';
 import { TaskCard } from './TaskCard';
 import { Badge } from '../../components/ui/badge';
@@ -37,7 +38,7 @@ export function TaskColumn({ title, tasks, className = '', status }: TaskColumnP
         {tasks.length === 0 ? (
           <div className="flex items-center justify-center h-32 text-muted-foreground">
             <div className="text-center">
-              <div className="text-3xl mb-2">📝</div>
+              <FileText size={32} className="mx-auto mb-2 text-muted-foreground/50" />
               <p className="text-sm">No tasks</p>
             </div>
           </div>
