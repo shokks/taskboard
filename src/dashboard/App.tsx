@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
 import { KanbanBoard } from './components/KanbanBoard';
+import { DashboardHeader } from './components/DashboardHeader';
 import { TaskData } from './types/task.types';
 import { useTaskUpdates } from './hooks/useTaskUpdates';
+
+type ViewType = 'kanban' | 'list' | 'grid';
 
 export default function App() {
   const [taskData, setTaskData] = useState<TaskData>({ tasks: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentView, setCurrentView] = useState<ViewType>('kanban');
 
   // Connect to WebSocket for real-time updates
   useTaskUpdates((data) => {
@@ -64,18 +68,18 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <div className="text-lg text-gray-600 dark:text-gray-400">Loading tasks...</div>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-lg text-muted-foreground">Loading tasks...</div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <div className="text-lg text-red-600 dark:text-red-400 mb-2">{error}</div>
-          <div className="text-sm text-gray-600 dark:text-gray-400">
+          <div className="text-lg text-destructive mb-2">{error}</div>
+          <div className="text-sm text-muted-foreground">
             Make sure TaskMaster is initialized in your project
           </div>
         </div>
@@ -83,22 +87,44 @@ export default function App() {
     );
   }
 
-  return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <header className="bg-white dark:bg-gray-800 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-            Taskboard
-          </h1>
-          {taskData.metadata?.tag && (
-            <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-              Tag: {taskData.metadata.tag}
+  const renderCurrentView = () => {
+    switch (currentView) {
+      case 'kanban':
+        return <KanbanBoard tasks={taskData.tasks} />;
+      case 'list':
+        // TODO: Implement ListView component
+        return (
+          <div className="flex items-center justify-center h-64 border-2 border-dashed border-muted rounded-lg">
+            <div className="text-center">
+              <div className="text-2xl mb-2">📋</div>
+              <p className="text-muted-foreground">List view coming soon</p>
             </div>
-          )}
-        </div>
-      </header>
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <KanbanBoard tasks={taskData.tasks} />
+          </div>
+        );
+      case 'grid':
+        // TODO: Implement GridView component
+        return (
+          <div className="flex items-center justify-center h-64 border-2 border-dashed border-muted rounded-lg">
+            <div className="text-center">
+              <div className="text-2xl mb-2">⊞</div>
+              <p className="text-muted-foreground">Grid view coming soon</p>
+            </div>
+          </div>
+        );
+      default:
+        return <KanbanBoard tasks={taskData.tasks} />;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      <DashboardHeader 
+        taskData={taskData}
+        currentView={currentView}
+        onViewChange={setCurrentView}
+      />
+      <main className="container mx-auto px-4 py-6">
+        {renderCurrentView()}
       </main>
     </div>
   );

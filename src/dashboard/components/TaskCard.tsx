@@ -75,7 +75,7 @@ export function TaskCard({ task }: TaskCardProps) {
 
   return (
     <div 
-      className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border-l-4 ${borderColor} transition-all duration-200 hover:shadow-md`}
+      className={`bg-card text-card-foreground rounded-lg shadow-sm border-l-4 ${borderColor} transition-all duration-200 hover:shadow-md`}
     >
       {/* Card Header */}
       <div 
@@ -89,15 +89,15 @@ export function TaskCard({ task }: TaskCardProps) {
       >
         <div className="flex justify-between items-start mb-3">
           <div className="flex-1 min-w-0 pr-3">
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 text-sm leading-tight">
+            <h3 className="font-semibold text-card-foreground text-sm leading-tight">
               {task.title}
             </h3>
             <div className="flex items-center gap-2 mt-1">
-              <span className="text-xs text-gray-500 dark:text-gray-400">
+              <span className="text-xs text-muted-foreground">
                 #{task.id}
               </span>
               {task.priority && (
-                <span className="text-xs text-gray-500 dark:text-gray-400">
+                <span className="text-xs text-muted-foreground">
                   {priorityLabels[task.priority]}
                 </span>
               )}
@@ -119,7 +119,7 @@ export function TaskCard({ task }: TaskCardProps) {
         </div>
 
         {task.description && (
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+          <p className="text-sm text-muted-foreground mb-3">
             {isExpanded ? task.description : truncateText(task.description, 120)}
           </p>
         )}
@@ -139,7 +139,7 @@ export function TaskCard({ task }: TaskCardProps) {
           )}
           
           {task.updated && (
-            <span className="text-gray-500 dark:text-gray-400">
+            <span className="text-muted-foreground">
               Updated {formatRelativeTime(task.updated)}
             </span>
           )}
