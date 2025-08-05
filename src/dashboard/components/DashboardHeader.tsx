@@ -14,6 +14,10 @@ import { ProgressIndicator } from './ProgressIndicator';
 import { CompactMetrics } from './CompactMetrics';
 import { useMetrics } from '../hooks/useMetrics';
 import { useHeaderCollapse } from '../hooks/useHeaderCollapse';
+import { Logo } from './Logo';
+
+// Version from package.json
+const VERSION = '1.0.2';
 
 interface DashboardHeaderProps {
   taskData: TaskData;
@@ -37,8 +41,10 @@ export function DashboardHeader({ taskData, currentView, onViewChange }: Dashboa
           <div className="flex items-center justify-between gap-4">
             {/* Left: Title + Project + Compact Metrics */}
             <div className="flex items-center gap-4 min-w-0 flex-1">
-              <div className="flex items-center gap-2 flex-shrink-0">
-                <h1 className="text-lg font-bold">Taskboard</h1>
+              <div className="flex items-baseline gap-2 flex-shrink-0">
+                <Logo size={20} className="text-foreground align-baseline" />
+                <h1 className="text-lg font-bold leading-none">Taskboard</h1>
+                <span className="text-xs text-muted-foreground font-medium leading-none align-baseline">v{VERSION}</span>
               </div>
               
               <div className="hidden sm:block">
@@ -71,7 +77,11 @@ export function DashboardHeader({ taskData, currentView, onViewChange }: Dashboa
             {/* Title and Project Info */}
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h1 className="text-3xl font-bold tracking-tight">Taskboard</h1>
+                <div className="flex items-baseline gap-3">
+                  <Logo size={28} className="text-foreground align-baseline" />
+                  <h1 className="text-3xl font-bold tracking-tight leading-none">Taskboard</h1>
+                  <span className="text-sm text-muted-foreground font-medium leading-none align-baseline">v{VERSION}</span>
+                </div>
               </div>
               
               {/* View Toggle + Collapse Button */}
