@@ -11,6 +11,8 @@ A real-time Kanban dashboard for [TaskMaster AI](https://github.com/eyaltoledano
 
 **Created by [@5aikat](https://x.com/5aikat)**
 
+[![Follow on X](https://img.shields.io/twitter/follow/5aikat?style=social)](https://x.com/5aikat)
+
 TaskMaster AI, created by [Eyal Toledano](https://github.com/eyaltoledano), is an AI-powered project management system that breaks down complex software development projects into manageable, structured tasks. It integrates seamlessly with AI-driven development environments like Cursor AI, Windsurf, Roo, and others, helping maintain context and organization throughout the development process.
 
 **This taskboard serves as the perfect visual companion**, transforming your structured TaskMaster AI tasks into an intuitive Kanban board that updates in real-time. Whether you're working with Claude, Cursor AI, or other AI assistants, you'll have a live dashboard showing exactly where your project stands - making AI-assisted development more organized and productive than ever.
