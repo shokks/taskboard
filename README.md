@@ -17,13 +17,13 @@ TaskMaster AI, created by [Eyal Toledano](https://github.com/eyaltoledano), is a
 
 **This taskboard serves as the perfect visual companion**, transforming your structured TaskMaster AI tasks into an intuitive Kanban board that updates in real-time. Whether you're working with Claude, Cursor AI, or other AI assistants, you'll have a live dashboard showing exactly where your project stands - making AI-assisted development more organized and productive than ever.
 
-## From Raw JSON to Beautiful Dashboard
+## From CLI Dashboard to Beautiful Dashboard
 
 Transform your TaskMaster AI experience from overwhelming JSON files to intuitive visual project management.
 
-### Before: TaskMaster AI Tasks (Raw JSON)
-![Raw TaskMaster AI JSON](screenshots/before.png)
-*Raw TaskMaster AI tasks.json file - functional but difficult to navigate, understand, and share with your team*
+### Before: TaskMaster AI Native CLI Dashboard
+![TaskMaster AI CLI Dashboard](screenshots/before.png)
+*The original TaskMaster AI CLI dashboard: functional, but text-heavy and hard to scan or share with your team*
 
 ### After: Taskboard Dashboard
 ![Taskboard Dashboard](screenshots/dashboard.png)
