@@ -5,10 +5,10 @@ interface TaskCardProps {
 }
 
 export function TaskCard({ task }: TaskCardProps) {
-  const priorityColors = {
-    high: 'border-red-400 bg-red-50 dark:bg-red-900/20',
-    medium: 'border-yellow-400 bg-yellow-50 dark:bg-yellow-900/20',
-    low: 'border-green-400 bg-green-50 dark:bg-green-900/20',
+  const priorityBorders = {
+    high: 'border-red-400',
+    medium: 'border-yellow-400', 
+    low: 'border-green-400',
   };
 
   const priorityLabels = {
@@ -17,16 +17,16 @@ export function TaskCard({ task }: TaskCardProps) {
     low: '🟢 Low',
   };
 
+  const borderColor = task.priority ? priorityBorders[task.priority] : 'border-gray-300 dark:border-gray-600';
+
   return (
-    <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 border-l-4 ${
-      task.priority ? priorityColors[task.priority] : 'border-gray-300'
-    }`}>
+    <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 border-l-4 ${borderColor}`}>
       <div className="flex justify-between items-start mb-2">
         <h3 className="font-medium text-gray-900 dark:text-gray-100">
           {task.title}
         </h3>
         {task.priority && (
-          <span className="text-xs">
+          <span className="text-xs text-gray-600 dark:text-gray-300">
             {priorityLabels[task.priority]}
           </span>
         )}
