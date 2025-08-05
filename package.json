@@ -1,6 +1,6 @@
 {
-  "name": "taskboard",
-  "version": "1.0.0",
+  "name": "claude-taskboard",
+  "version": "1.0.1",
   "description": "A real-time Kanban dashboard for TaskMaster AI projects - visual companion for AI-assisted development workflows",
   "type": "module",
   "bin": {
@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && npm run build:cli",
-    "build:cli": "tsc -p tsconfig.cli.json",
+    "build:cli": "tsc -p tsconfig.cli.json && chmod +x dist/cli/index.js",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
     "lint": "eslint src --ext .ts,.tsx",
