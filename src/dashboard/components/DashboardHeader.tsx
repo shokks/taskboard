@@ -1,3 +1,12 @@
+import { 
+  CheckCircle, 
+  Clock, 
+  RotateCw, 
+  Eye, 
+  AlertTriangle,
+  TrendingUp,
+  BarChart3
+} from 'lucide-react';
 import { TaskData } from '../types/task.types';
 import { Card, CardContent } from '../../components/ui/card';
 import { Badge } from '../../components/ui/badge';

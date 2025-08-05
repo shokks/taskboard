@@ -35,7 +35,7 @@ export function KanbanBoard({ tasks }: KanbanBoardProps) {
       tasks: reviewTasks, 
       status: "review" as const,
       className: "bg-purple-50 dark:bg-purple-900/20",
-      show: true
+      show: reviewTasks.length > 0
     },
     {
       title: "Completed",

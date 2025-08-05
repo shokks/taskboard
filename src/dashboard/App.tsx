@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { List, Grid3X3 } from 'lucide-react';
 import { KanbanBoard } from './components/KanbanBoard';
 import { DashboardHeader } from './components/DashboardHeader';
 import { TaskData } from './types/task.types';
@@ -96,7 +97,7 @@ export default function App() {
         return (
           <div className="flex items-center justify-center h-64 border-2 border-dashed border-muted rounded-lg">
             <div className="text-center">
-              <div className="text-2xl mb-2">📋</div>
+              <List size={48} className="mx-auto mb-2 text-muted-foreground/50" />
               <p className="text-muted-foreground">List view coming soon</p>
             </div>
           </div>
@@ -106,7 +107,7 @@ export default function App() {
         return (
           <div className="flex items-center justify-center h-64 border-2 border-dashed border-muted rounded-lg">
             <div className="text-center">
-              <div className="text-2xl mb-2">⊞</div>
+              <Grid3X3 size={48} className="mx-auto mb-2 text-muted-foreground/50" />
               <p className="text-muted-foreground">Grid view coming soon</p>
             </div>
           </div>
