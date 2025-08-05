@@ -8,7 +8,6 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { TaskData } from '../types/task.types';
-import { Badge } from '../../components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '../../components/ui/tabs';
 import { MetricCard } from './MetricCard';
 import { ProgressIndicator } from './ProgressIndicator';
@@ -40,9 +39,6 @@ export function DashboardHeader({ taskData, currentView, onViewChange }: Dashboa
             <div className="flex items-center gap-4 min-w-0 flex-1">
               <div className="flex items-center gap-2 flex-shrink-0">
                 <h1 className="text-lg font-bold">Taskboard</h1>
-                {taskData.metadata?.tag && (
-                  <Badge variant="secondary" className="text-xs">{taskData.metadata.tag}</Badge>
-                )}
               </div>
               
               <div className="hidden sm:block">
@@ -76,12 +72,6 @@ export function DashboardHeader({ taskData, currentView, onViewChange }: Dashboa
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h1 className="text-3xl font-bold tracking-tight">Taskboard</h1>
-                {taskData.metadata?.tag && (
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-sm text-muted-foreground">Project:</span>
-                    <Badge variant="secondary">{taskData.metadata.tag}</Badge>
-                  </div>
-                )}
               </div>
               
               {/* View Toggle + Collapse Button */}
