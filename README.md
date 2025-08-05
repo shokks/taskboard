@@ -1,5 +1,12 @@
 # Taskboard
 
+[![npm version](https://badge.fury.io/js/taskboard.svg)](https://www.npmjs.com/package/taskboard)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)](https://nodejs.org/)
+[![Downloads](https://img.shields.io/npm/dm/taskboard.svg)](https://www.npmjs.com/package/taskboard)
+[![GitHub stars](https://img.shields.io/github/stars/shokks/taskboard.svg?style=social&label=Star)](https://github.com/shokks/taskboard)
+[![GitHub issues](https://img.shields.io/github/issues/shokks/taskboard.svg)](https://github.com/shokks/taskboard/issues)
+
 A real-time Kanban dashboard for [TaskMaster AI](https://github.com/eyaltoledano/claude-task-master) projects. This tool provides a beautiful, live visualization of your TaskMaster AI tasks, automatically updating as your AI-assisted development workflow progresses.
 
 ## About TaskMaster AI
@@ -7,6 +14,11 @@ A real-time Kanban dashboard for [TaskMaster AI](https://github.com/eyaltoledano
 [TaskMaster AI](https://task-master.dev) is an AI-powered project management system that breaks down complex software development projects into manageable, structured tasks. Created by [Eyal Toledano](https://github.com/eyaltoledano), TaskMaster AI integrates seamlessly with AI-driven development environments like Cursor AI, Windsurf, Roo, and others, helping maintain context and organization throughout the development process.
 
 **This taskboard serves as a visual companion to TaskMaster AI**, transforming your structured tasks into an intuitive Kanban board that updates in real-time as you work with AI assistants like Claude.
+
+## Screenshots
+
+![Taskboard Dashboard](screenshots/dashboard.png)
+*Modern dashboard with intelligent metrics, clean Lucide icons, and professional design. Features collapsible header, real-time task visualization, and intuitive Kanban workflow.*
 
 ## Features
 
@@ -155,6 +167,39 @@ npm run dev
 This project is a visualization companion for [TaskMaster AI](https://github.com/eyaltoledano/claude-task-master), created by [Eyal Toledano](https://github.com/eyaltoledano). TaskMaster AI revolutionizes AI-assisted development by providing structured task management that keeps AI agents focused and productive.
 
 Special thanks to the TaskMaster AI community and the broader AI development ecosystem, including the teams behind Claude, Cursor AI, Windsurf, and other tools that make AI-assisted development possible.
+
+## Version History
+
+### v1.0.0 (Current)
+*Initial Release - August 2025*
+
+**🎉 Initial Features:**
+- **Real-time Kanban Dashboard**: Live visualization of TaskMaster AI tasks with automatic updates
+- **TaskMaster AI Integration**: Native support for `.taskmaster/tasks/tasks.json` file monitoring
+- **Enhanced Task Cards**: Expandable cards with detailed task information, subtasks, and dependencies
+- **Modern UI**: Built with shadcn/ui components, React, and TailwindCSS
+- **Dark Mode Support**: Full dark mode compatibility with improved contrast
+- **Multi-project Support**: Independent dashboard instances per project
+- **Zero Configuration**: Works immediately with any TaskMaster AI project
+
+**🔧 Technical Highlights:**
+- **CLI Tool**: Global npm package with `taskboard serve` command
+- **Port Management**: Automatic port detection and conflict resolution (5000-5999 range)
+- **File Watching**: Real-time monitoring with sub-second update responsiveness
+- **Dynamic Columns**: Smart column visibility (Review column shows/hides based on task presence)
+- **Responsive Design**: Mobile-friendly interface with collapsible header
+- **TypeScript**: Full type safety and modern development experience
+
+**📚 Documentation:**
+- Comprehensive README with TaskMaster AI attribution
+- Installation and usage instructions
+- Troubleshooting guides and FAQ
+- Integration examples for AI development workflows
+
+**🎯 TaskMaster AI Ecosystem:**
+- Proper attribution to [Eyal Toledano's TaskMaster AI project](https://github.com/eyaltoledano/claude-task-master)
+- Integration guides for Claude, Cursor AI, Windsurf, and other AI development tools
+- Links to official TaskMaster AI resources and documentation
 
 ## License
 
