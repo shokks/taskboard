@@ -1,10 +1,16 @@
+import { useState } from 'react';
 import { Task } from '../types/task.types';
+import { StatusBadge } from './StatusBadge';
+import { SubtaskList } from './SubtaskList';
+import { ProgressBar } from './ProgressBar';
 
 interface TaskCardProps {
   task: Task;
 }
 
 export function TaskCard({ task }: TaskCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const priorityBorders = {
     high: 'border-red-400',
     medium: 'border-yellow-400', 
@@ -19,42 +25,202 @@ export function TaskCard({ task }: TaskCardProps) {
 
   const borderColor = task.priority ? priorityBorders[task.priority] : 'border-gray-300 dark:border-gray-600';
 
-  return (
-    <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 border-l-4 ${borderColor}`}>
-      <div className="flex justify-between items-start mb-2">
-        <h3 className="font-medium text-gray-900 dark:text-gray-100">
-          {task.title}
-        </h3>
-        {task.priority && (
-          <span className="text-xs text-gray-600 dark:text-gray-300">
-            {priorityLabels[task.priority]}
-          </span>
-        )}
-      </div>
-      
-      {task.description && (
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-          {task.description}
-        </p>
-      )}
+  const formatDate = (dateString?: string) => {
+    if (!dateString) return null;
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString();
+    } catch {
+      return dateString;
+    }
+  };
 
-      <div className="flex flex-wrap gap-2 text-xs">
-        <span className="text-gray-500 dark:text-gray-400">
-          #{task.id}
-        </span>
-        
-        {task.subtasks && task.subtasks.length > 0 && (
-          <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded">
-            {task.subtasks.filter(st => st.status === 'done').length}/{task.subtasks.length} subtasks
-          </span>
+  const formatRelativeTime = (dateString?: string) => {
+    if (!dateString) return null;
+    try {
+      const date = new Date(dateString);
+      const now = new Date();
+      const diffTime = Math.abs(now.getTime() - date.getTime());
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      
+      if (diffDays === 1) return '1 day ago';
+      if (diffDays < 7) return `${diffDays} days ago`;
+      if (diffDays < 30) return `${Math.ceil(diffDays / 7)} weeks ago`;
+      return formatDate(dateString);
+    } catch {
+      return dateString;
+    }
+  };
+
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength) + '...';
+  };
+
+  const completedSubtasks = task.subtasks?.filter(st => st.status === 'done').length || 0;
+  const totalSubtasks = task.subtasks?.length || 0;
+
+  const handleToggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleToggleExpand();
+    } else if (e.key === 'Escape' && isExpanded) {
+      setIsExpanded(false);
+    }
+  };
+
+  return (
+    <div 
+      className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border-l-4 ${borderColor} transition-all duration-200 hover:shadow-md`}
+    >
+      {/* Card Header */}
+      <div 
+        className="p-4 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset rounded-t-lg"
+        onClick={handleToggleExpand}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+        role="button"
+        aria-expanded={isExpanded}
+        aria-label={`${isExpanded ? 'Collapse' : 'Expand'} task details for ${task.title}`}
+      >
+        <div className="flex justify-between items-start mb-3">
+          <div className="flex-1 min-w-0 pr-3">
+            <h3 className="font-semibold text-gray-900 dark:text-gray-100 text-sm leading-tight">
+              {task.title}
+            </h3>
+            <div className="flex items-center gap-2 mt-1">
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                #{task.id}
+              </span>
+              {task.priority && (
+                <span className="text-xs text-gray-500 dark:text-gray-400">
+                  {priorityLabels[task.priority]}
+                </span>
+              )}
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <StatusBadge status={task.status} size="sm" />
+            <button 
+              className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-transform duration-200"
+              style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
+              aria-label={isExpanded ? 'Collapse' : 'Expand'}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {task.description && (
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+            {isExpanded ? task.description : truncateText(task.description, 120)}
+          </p>
         )}
-        
-        {task.dependencies && task.dependencies.length > 0 && (
-          <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-2 py-1 rounded">
-            {task.dependencies.length} deps
-          </span>
+
+        {/* Quick Stats */}
+        <div className="flex flex-wrap gap-2 text-xs">
+          {totalSubtasks > 0 && (
+            <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-full">
+              {completedSubtasks}/{totalSubtasks} subtasks
+            </span>
+          )}
+          
+          {task.dependencies && task.dependencies.length > 0 && (
+            <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-2 py-1 rounded-full">
+              {task.dependencies.length} deps
+            </span>
+          )}
+          
+          {task.updated && (
+            <span className="text-gray-500 dark:text-gray-400">
+              Updated {formatRelativeTime(task.updated)}
+            </span>
+          )}
+        </div>
+
+        {/* Progress Bar for Subtasks */}
+        {totalSubtasks > 0 && !isExpanded && (
+          <div className="mt-3">
+            <ProgressBar 
+              completed={completedSubtasks} 
+              total={totalSubtasks} 
+              size="sm"
+              showLabel={false}
+            />
+          </div>
         )}
       </div>
+
+      {/* Expanded Content */}
+      {isExpanded && (
+        <div className="px-4 pb-4 border-t border-gray-100 dark:border-gray-700">
+          <div className="pt-4 space-y-4">
+            
+            {/* Implementation Details */}
+            {task.details && (
+              <div>
+                <h4 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">
+                  Implementation Details
+                </h4>
+                <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap">
+                  {task.details}
+                </div>
+              </div>
+            )}
+
+            {/* Test Strategy */}
+            {task.testStrategy && (
+              <div>
+                <h4 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">
+                  Test Strategy
+                </h4>
+                <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-3 text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap">
+                  {task.testStrategy}
+                </div>
+              </div>
+            )}
+
+            {/* Dependencies */}
+            {task.dependencies && task.dependencies.length > 0 && (
+              <div>
+                <h4 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">
+                  Dependencies
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {task.dependencies.map((dep, index) => (
+                    <span 
+                      key={index}
+                      className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-2 py-1 rounded text-xs"
+                    >
+                      Task #{dep}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Timestamps */}
+            <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-100 dark:border-gray-700">
+              {task.created && (
+                <span>Created: {formatDate(task.created)}</span>
+              )}
+              {task.updated && (
+                <span>Updated: {formatDate(task.updated)}</span>
+              )}
+            </div>
+
+            {/* Subtasks */}
+            <SubtaskList subtasks={task.subtasks || []} parentId={task.id} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
