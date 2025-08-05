@@ -23,7 +23,7 @@ Transform your TaskMaster AI experience from overwhelming JSON files to intuitiv
 
 ### Before: TaskMaster AI Native CLI Dashboard
 ![TaskMaster AI CLI Dashboard](screenshots/before.png)
-*The original TaskMaster AI CLI dashboard: functional, but text-heavy and hard to scan or share with your team*
+*The original TaskMaster AI CLI dashboard: functional, but text-heavy and hard to scan or share progress screenshot with others*
 
 ### After: Taskboard Dashboard
 ![Taskboard Dashboard](screenshots/dashboard.png)
@@ -182,40 +182,26 @@ npm run dev
 
 This project is a visualization companion for [TaskMaster AI](https://github.com/eyaltoledano/claude-task-master), created by [Eyal Toledano](https://github.com/eyaltoledano). TaskMaster AI revolutionizes AI-assisted development by providing structured task management that keeps AI agents focused and productive.
 
-Special thanks to the TaskMaster AI community and the broader AI development ecosystem, including the teams behind Claude, Cursor AI, Windsurf, and other tools that make AI-assisted development possible.
 
 ## Version History
 
-### v1.0.3 (Current)
+### v1.0.5 (Current)
 *Latest Release - August 2025*
+- Improved documentation with accurate CLI dashboard comparison
+- Updated screenshots and before/after descriptions
 
-**🎉 Initial Features:**
-- **Real-time Kanban Dashboard**: Live visualization of TaskMaster AI tasks with automatic updates
-- **TaskMaster AI Integration**: Native support for `.taskmaster/tasks/tasks.json` file monitoring
-- **Enhanced Task Cards**: Expandable cards with detailed task information, subtasks, and dependencies
-- **Modern UI**: Built with shadcn/ui components, React, and TailwindCSS
-- **Dark Mode Support**: Full dark mode compatibility with improved contrast
-- **Multi-project Support**: Independent dashboard instances per project
-- **Zero Configuration**: Works immediately with any TaskMaster AI project
+### v1.0.4
+*August 2025*
+- Perfect logo alignment with text baseline
+- Dynamic version display from package.json
+- Updated installation commands for correct package name
 
-**🔧 Technical Highlights:**
-- **CLI Tool**: Global npm package with `taskboard serve` command
-- **Port Management**: Automatic port detection and conflict resolution (5000-5999 range)
-- **File Watching**: Real-time monitoring with sub-second update responsiveness
-- **Dynamic Columns**: Smart column visibility (Review column shows/hides based on task presence)
-- **Responsive Design**: Mobile-friendly interface with collapsible header
-- **TypeScript**: Full type safety and modern development experience
-
-**📚 Documentation:**
-- Comprehensive README with TaskMaster AI attribution
-- Installation and usage instructions
-- Troubleshooting guides and FAQ
-- Integration examples for AI development workflows
-
-**🎯 TaskMaster AI Ecosystem:**
-- Proper attribution to [Eyal Toledano's TaskMaster AI project](https://github.com/eyaltoledano/claude-task-master)
-- Integration guides for Claude, Cursor AI, Windsurf, and other AI development tools
-- Links to official TaskMaster AI resources and documentation
+### v1.0.3
+*August 2025*
+- Initial release with real-time Kanban dashboard
+- TaskMaster AI integration and task monitoring
+- Modern UI with dark mode support
+- Zero configuration setup
 
 ## License
 
