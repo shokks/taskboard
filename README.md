@@ -185,8 +185,16 @@ This project is a visualization companion for [TaskMaster AI](https://github.com
 
 ## Version History
 
-### v1.0.5 (Current)
+### v1.0.7 (Current)
 *Latest Release - August 2025*
+- Added TaskMaster-like dependency ordering to dashboard
+- Pending tasks now sorted by dependency readiness (ready tasks first)
+- Visual dependency indicators: "Ready ✅" for available tasks, "Waiting for #X ⏳" for blocked tasks
+- Fixed issue where tasks appeared in JSON array order instead of logical dependency order
+- Dashboard now matches TaskMaster's next-task logic for better workflow guidance
+
+### v1.0.5
+*August 2025*
 - Improved documentation with accurate CLI dashboard comparison
 - Updated screenshots and before/after descriptions
 

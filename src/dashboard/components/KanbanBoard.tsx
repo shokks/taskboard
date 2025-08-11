@@ -1,5 +1,6 @@
 import { Task } from '../types/task.types';
 import { TaskColumn } from './TaskColumn';
+import { sortPendingTasks } from '../utils/taskSorting';
 
 interface KanbanBoardProps {
   tasks: Task[];
@@ -7,12 +8,15 @@ interface KanbanBoardProps {
 
 export function KanbanBoard({ tasks }: KanbanBoardProps) {
   // Group tasks by status - including all possible statuses
-  const pendingTasks = tasks.filter(task => task.status === 'pending');
+  const rawPendingTasks = tasks.filter(task => task.status === 'pending');
   const inProgressTasks = tasks.filter(task => task.status === 'in-progress');
   const reviewTasks = tasks.filter(task => task.status === 'review');
   const completedTasks = tasks.filter(task => task.status === 'done');
   const deferredTasks = tasks.filter(task => task.status === 'deferred');
   const cancelledTasks = tasks.filter(task => task.status === 'cancelled');
+
+  // Sort pending tasks using dependency logic (ready tasks first)
+  const pendingTasks = sortPendingTasks(rawPendingTasks, tasks);
 
   // Only show columns that have tasks or are in the main workflow
   const columns = [
@@ -80,6 +84,7 @@ export function KanbanBoard({ tasks }: KanbanBoardProps) {
             key={column.status}
             title={column.title}
             tasks={column.tasks}
+            allTasks={tasks}
             className={column.className}
             status={column.status}
           />

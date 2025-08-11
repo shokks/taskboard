@@ -6,11 +6,12 @@ import { Badge } from '../../components/ui/badge';
 interface TaskColumnProps {
   title: string;
   tasks: Task[];
+  allTasks?: Task[];
   className?: string;
   status?: string;
 }
 
-export function TaskColumn({ title, tasks, className = '', status }: TaskColumnProps) {
+export function TaskColumn({ title, tasks, allTasks = [], className = '', status }: TaskColumnProps) {
   const getStatusColor = (status?: string) => {
     switch (status) {
       case 'pending': return 'bg-gray-100 dark:bg-gray-800';
@@ -43,7 +44,7 @@ export function TaskColumn({ title, tasks, className = '', status }: TaskColumnP
             </div>
           </div>
         ) : (
-          tasks.map((task) => <TaskCard key={task.id} task={task} />)
+          tasks.map((task) => <TaskCard key={task.id} task={task} allTasks={allTasks} />)
         )}
       </div>
     </div>

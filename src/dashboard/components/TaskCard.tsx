@@ -1,16 +1,22 @@
 import { useState } from 'react';
-import { ChevronDown, Circle } from 'lucide-react';
+import { ChevronDown, Circle, CheckCircle, Clock } from 'lucide-react';
 import { Task } from '../types/task.types';
 import { StatusBadge } from './StatusBadge';
 import { SubtaskList } from './SubtaskList';
 import { ProgressBar } from './ProgressBar';
+import { getTaskDependencyStatus } from '../utils/taskSorting';
 
 interface TaskCardProps {
   task: Task;
+  allTasks?: Task[];
 }
 
-export function TaskCard({ task }: TaskCardProps) {
+export function TaskCard({ task, allTasks = [] }: TaskCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  
+  // Get dependency status for pending tasks
+  const dependencyStatus = task.status === 'pending' ? 
+    getTaskDependencyStatus(task, allTasks) : null;
 
   const priorityBorders = {
     high: 'border-red-400',
@@ -112,6 +118,24 @@ export function TaskCard({ task }: TaskCardProps) {
                   <span className={priorityColors[task.priority]}>
                     {priorityLabels[task.priority]}
                   </span>
+                </div>
+              )}
+              {dependencyStatus && (
+                <div className="flex items-center gap-1 text-xs">
+                  {dependencyStatus.isReady ? (
+                    <>
+                      <CheckCircle size={8} className="text-green-600 dark:text-green-400" />
+                      <span className="text-green-600 dark:text-green-400">Ready</span>
+                    </>
+                  ) : (
+                    <>
+                      <Clock size={8} className="text-orange-600 dark:text-orange-400" />
+                      <span className="text-orange-600 dark:text-orange-400">
+                        Waiting for #{dependencyStatus.blockedBy[0]?.id}
+                        {dependencyStatus.blockedBy.length > 1 && ` +${dependencyStatus.blockedBy.length - 1}`}
+                      </span>
+                    </>
+                  )}
                 </div>
               )}
             </div>
